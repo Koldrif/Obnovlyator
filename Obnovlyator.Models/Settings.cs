@@ -2,7 +2,7 @@
 
 public static class Settings
 {
-	public static readonly string ServerUrl = "koldrif.ru";
+	public static readonly string ServerUrl = "multiplayerlearning.koldrif.ru:3333";
 	public static readonly string ManifestFileName = "manifest.json";
 	public static string ExecLocation => Environment.CurrentDirectory;
 }

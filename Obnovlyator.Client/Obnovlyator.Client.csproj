@@ -8,4 +8,12 @@
         <DebugType>embedded</DebugType>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Obnovlyator.Models\Obnovlyator.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    </ItemGroup>
+
 </Project>
