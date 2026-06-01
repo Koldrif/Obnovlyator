@@ -5,7 +5,7 @@ namespace Obnovlyator.Server;
 
 public static class ManifestCreator
 {
-	public static readonly string[] filesToExclude = ["manifest.json", "Obnovlyator.Server.exe"];
+	public static readonly string[] filesToExclude = [Settings.ManifestFileName, "Obnovlyator.Server.exe"];
 	public static async Task<Manifest> Create(string? exeDirectory = null)
 	{
 		var manifest = new Manifest();

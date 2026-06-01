@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
+using Obnovlyator.Models;
 using Obnovlyator.Server;
 
-var exeDirectory = Environment.CurrentDirectory;
-var manifestFileName = "manifest.json";
-
-var manifest = await ManifestCreator.Create(exeDirectory);
+var manifest = await ManifestCreator.Create(Settings.ExecLocation);
 
 var manifestJson = JsonConvert.SerializeObject(manifest, Formatting.Indented);
-await File.WriteAllTextAsync(Path.Combine(exeDirectory, manifestFileName), manifestJson);
+await File.WriteAllTextAsync(Path.Combine(Settings.ExecLocation, Settings.ManifestFileName), manifestJson);
