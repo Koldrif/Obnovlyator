@@ -1,28 +1,10 @@
-﻿using System.Security.Cryptography;
-using Newtonsoft.Json;
-using Obnovlyator.Models;
+﻿using Newtonsoft.Json;
+using Obnovlyator.Server;
 
 var exeDirectory = Environment.CurrentDirectory;
-var manifest = new Manifest();
+var manifestFileName = "manifest.json";
 
-var tasks = new List<Task<ManifestFileInfo>>();
-foreach (var filePath in Directory.EnumerateFiles(exeDirectory, "*", SearchOption.AllDirectories))
-{
-	tasks.Add(Task.Run(() =>
-	{
-		var fileInfo = File.OpenRead(filePath);
-		var sha = Convert.ToHexString(SHA256.HashData(fileInfo));
-		return new ManifestFileInfo()
-		{
-			Path = Path.GetRelativePath(exeDirectory, filePath),
-			SHA = sha
-		};
-	}));
-}
+var manifest = await ManifestCreator.Create(exeDirectory);
 
-var fileInfos = await Task.WhenAll(tasks);
-
-manifest.Files = fileInfos.ToList();
-
-// Console.WriteLine(JsonSerializer.Serialize(manifest, new JsonSerializerOptions() {WriteIndented = true, IncludeFields = true}));
-Console.WriteLine(JsonConvert.SerializeObject(manifest, Formatting.Indented));
+var manifestJson = JsonConvert.SerializeObject(manifest, Formatting.Indented);
+await File.WriteAllTextAsync(Path.Combine(exeDirectory, manifestFileName), manifestJson);
