@@ -5,6 +5,7 @@ namespace Obnovlyator.Server;
 
 public static class ManifestCreator
 {
+	public static readonly string[] filesToExclude = ["manifest.json", "Obnovlyator.Server.exe"];
 	public static async Task<Manifest> Create(string? exeDirectory = null)
 	{
 		var manifest = new Manifest();
@@ -17,6 +18,10 @@ public static class ManifestCreator
 		var tasks = new List<Task<ManifestFileInfo>>();
 		foreach (var filePath in Directory.EnumerateFiles(exeDirectory, "*", SearchOption.AllDirectories))
 		{
+			if (filesToExclude.Contains(Path.GetFileName(filePath)))
+			{
+				continue;
+			}
 			tasks.Add(Task.Run(() =>
 			{
 				var fileInfo = File.OpenRead(filePath);
