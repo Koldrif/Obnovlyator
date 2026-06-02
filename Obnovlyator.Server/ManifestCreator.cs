@@ -30,7 +30,7 @@ public static class ManifestCreator
 			}
 			tasks.Add(Task.Run(() =>
 			{
-				var fileInfo = File.OpenRead(filePath);
+				using var fileInfo = File.OpenRead(filePath);
 				var sha = Convert.ToHexString(SHA256.HashData(fileInfo));
 				return new ManifestFileInfo()
 				{

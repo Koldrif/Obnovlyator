@@ -2,22 +2,16 @@
 
 public record Manifest
 {
-	public Manifest() : this(DateTime.Now)
+	public Manifest() : this(Guid.NewGuid())
 	{
 		
 	}
 
-	public Manifest(DateTime version)
+	public Manifest(Guid guid)
 	{
-		Version = version.ToString("yyyy-MM-dd-hh-mm-ss");
+		Version = guid.ToString();
 		Files = new();
 	}
 	public string Version { get; set; }
 	public List<ManifestFileInfo> Files { get; set; }
-}
-
-public record ManifestFileInfo
-{
-	public string Path;
-	public string SHA; 
 }

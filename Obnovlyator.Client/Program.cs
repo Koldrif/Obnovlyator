@@ -1,31 +1,28 @@
-﻿using System.Net.Http.Json;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Obnovlyator.Client;
 using Obnovlyator.Models;
 
-var execDirectory = Environment.CurrentDirectory;
-var manifestLocation = Path.Combine(Settings.ExecLocation, Settings.ManifestFileName);
 
-// if (!AskDestinationCorrectness(execDirectory))
-// {
-// 	Console.WriteLine("Ask Igor what to do");
-// 	Console.ReadLine();
-// 	return;
-// }
+if (!AskDestinationCorrectness(Settings.OperatingDirectory))
+{
+	Console.WriteLine("Ask Igor what to do");
+	Console.ReadLine();
+	return;
+}
 
-using var httpClient = new HttpClient();
-var manifestUri = new Uri($"http://{Settings.ServerUrl}/{Settings.ManifestFileName}");
-var manifest = JsonConvert.DeserializeObject<Manifest>(await httpClient.GetStringAsync(manifestUri));
-Console.WriteLine(manifest);
+using var updater = new Updater();
+await updater.UpdateAsync();
 
-// var manifestFile = File.Exists();
+MessageEndProgram();
+
+
 
 bool AskDestinationCorrectness(string currentlyRunningDirection)
 {
 	Console.Clear();
-	bool bIsCorrectInput = false;
-	while (!bIsCorrectInput)
+	while (true)
 	{
-		Console.WriteLine($"Is that direction, where you want to install and update program?");
+		Console.WriteLine($"Is that direction, where you want to install and update the game?");
 		Console.Write("Directory: ");
 		Console.ForegroundColor = ConsoleColor.Cyan;
 		Console.WriteLine($"{currentlyRunningDirection}");
@@ -45,6 +42,16 @@ bool AskDestinationCorrectness(string currentlyRunningDirection)
 				break;
 		}
 	}
-
-	throw new ArgumentException("Unable to proccess input");
 }
+
+void MessageEndProgram()
+{
+	Console.ForegroundColor = ConsoleColor.Green;
+	Console.WriteLine("Game is up to date");
+	Console.ForegroundColor = ConsoleColor.Yellow;
+	Console.WriteLine("If you want to redownload game just delete manifest.json");
+	Console.ResetColor();
+	Console.Write("Press enter to exit program. ");
+	Console.ReadLine();
+}
+
