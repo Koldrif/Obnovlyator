@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Obnovlyator.Models;
+using Obnovlyator.Shared;
 
 namespace Obnovlyator.Client;
 

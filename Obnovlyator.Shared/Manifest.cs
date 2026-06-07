@@ -1,4 +1,4 @@
-﻿namespace Obnovlyator.Models;
+﻿namespace Obnovlyator.Shared;
 
 public record Manifest
 {

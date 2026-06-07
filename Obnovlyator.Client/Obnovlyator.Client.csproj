@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Obnovlyator.Models\Obnovlyator.Models.csproj" />
+      <ProjectReference Include="..\Obnovlyator.Shared\Obnovlyator.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Obnovlyator.Models;
+using Obnovlyator.Shared;
 using Obnovlyator.Server;
 
 var manifest = await ManifestCreator.Create(Settings.OperatingDirectory);

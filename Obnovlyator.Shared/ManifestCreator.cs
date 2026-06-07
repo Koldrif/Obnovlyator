@@ -1,5 +1,5 @@
 ﻿using System.Security.Cryptography;
-using Obnovlyator.Models;
+using Obnovlyator.Shared;
 
 namespace Obnovlyator.Server;
 
@@ -13,7 +13,7 @@ public static class ManifestCreator
 
 		if (string.IsNullOrWhiteSpace(exeDirectory))
 		{
-			exeDirectory = Environment.CurrentDirectory;
+			exeDirectory = Settings.OperatingDirectory;
 		}
 
 		var tasks = new List<Task<ManifestFileInfo>>();

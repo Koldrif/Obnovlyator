@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obnovlyator.Server", "Obnov
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obnovlyator.Client", "Obnovlyator.Client\Obnovlyator.Client.csproj", "{8290412D-22B7-4AA5-964C-4047548C876E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obnovlyator.Models", "Obnovlyator.Models\Obnovlyator.Models.csproj", "{D3D62FE5-E44B-48E5-8D5F-5FB4E718A137}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obnovlyator.Shared", "Obnovlyator.Shared\Obnovlyator.Shared.csproj", "{D3D62FE5-E44B-48E5-8D5F-5FB4E718A137}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

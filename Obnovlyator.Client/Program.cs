@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Obnovlyator.Client;
-using Obnovlyator.Models;
+using Obnovlyator.Shared;
 
 
 if (!AskDestinationCorrectness(Settings.OperatingDirectory))
